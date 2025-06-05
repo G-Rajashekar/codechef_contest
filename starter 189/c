@@ -1,0 +1,57 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+
+bool isPrime(int n){
+    if (n<=1) return false;
+    
+    for (int i=2;i*i<=n;i++){
+        if (n%i==0) return false;
+    }
+    return true;
+}
+int main() {
+	// your code goes here
+	int t;
+	cin>>t;
+	
+	while(t--){
+	    int n;
+	    cin>>n;
+	    
+	    if (n==1){
+	        cout<<1<<endl;
+	        continue;
+	    }
+	    if (n==2){
+	        cout<<1<<" "<<2<<endl;
+	        continue;
+	    }
+	    if (n==3){
+	        cout<<2<<" "<<1<<" "<<3<<endl;
+	        continue;
+	    }
+	    
+	    if (n==4){
+	        cout<<2<<" "<<1<<" "<<3<<" "<<4<<endl;
+	        continue;
+	    }
+	    
+	    vector<int>ans(n);
+	    ans[0]=3;
+	    ans[1]=2;
+	    ans[2]=1;
+	    
+	    for (int i=3;i<n;i+=2) ans[i]=i+2;
+	    for (int i=4;i<n;i+=2) ans[i]=i;
+	    if (n%2==0) ans[n-1]=n;
+	    
+	    for (auto ele:ans){
+	        cout<<ele<<" ";
+	    }
+	    cout<<endl;
+	}
+}
+
+TC:O(n)
+sc:O(n)
